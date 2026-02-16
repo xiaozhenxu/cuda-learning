@@ -106,7 +106,6 @@ int main() {
   gemm.randomize();
 
   using spec = KernelSpec<cute::half_t>;
-  // todo 这边的线程数量为什么是 32，各个 tile 到底代表了什么
   // std::cout << "kThreadNum: " << spec::kThreadNum << std::endl;
   dim3 block = spec::kThreadNum;
   dim3 grid((M + spec::kTileM - 1) / spec::kTileM, (N + spec::kTileN - 1) / spec::kTileN);
