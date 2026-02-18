@@ -145,7 +145,7 @@ int main() {
   constexpr int N = 32;
   constexpr int K = 16;
 
-  GemmData<cute::half_t> gemm(M, N, K);
+  GemmData<cute::half_t, cute::half_t, cute::half_t, cute::half_t> gemm(M, N, K);
   gemm.randomize();
 
   // todo: 后续将 spec 统一一下
@@ -154,7 +154,7 @@ int main() {
   dim3 block = spec::kThreadNum;
   dim3 grid((M + spec::kTileM - 1) / spec::kTileM, (N + spec::kTileN - 1) / spec::kTileN);
   int shm_size = spec::kShmSize;
-  tiled_mma_kernel<spec, true, true><<<grid, block, shm_size>>>(gemm.d_C, gemm.d_A, gemm.d_B, gemm.d_C, M, N, K);
+  tiled_mma_kernel<spec, true, true><<<grid, block, shm_size>>>(gemm.d_D, gemm.d_A, gemm.d_B, gemm.d_C, M, N, K);
 
   return 0;
 }

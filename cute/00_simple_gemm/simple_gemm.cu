@@ -102,7 +102,7 @@ int main() {
   constexpr int N = 8;
   constexpr int K = 8;
 
-  GemmData<cute::half_t> gemm(M, N, K);
+  GemmData<cute::half_t, cute::half_t, cute::half_t, cute::half_t> gemm(M, N, K);
   gemm.randomize();
 
   using spec = KernelSpec<cute::half_t>;
