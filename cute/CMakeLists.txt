@@ -8,3 +8,4 @@ target_include_directories(cute_lib INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/../thi
 
 add_subdirectory(00_simple_gemm)
 add_subdirectory(02_tiled_mma)
+add_subdirectory(03_block_mma)
