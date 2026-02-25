@@ -1,0 +1,3 @@
+add_executable(01_simple_mixed_gemm simple_mixed_gemm.cu)
+
+target_link_libraries(01_simple_mixed_gemm PRIVATE cute_lib)
